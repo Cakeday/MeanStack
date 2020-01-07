@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        let students = [
+            {name: 'Remy', cohort: 'Jan'},
+            {name: 'Genevieve', cohort: 'March'},
+            {name: 'Chuck', cohort: 'Jan'},
+            {name: 'Osmund', cohort: 'June'},
+            {name: 'Nikki', cohort: 'June'},
+            {name: 'Boris', cohort: 'June'}
+        ];
+
+        for(let x=0; x<students.length; x++){
+            console.log("Name = " + students[x].name + ", Cohort = " + students[x].cohort)
+        }
+
+
+
+
+
+
+        let users = {
+            employees: [
+                {'first_name':  'Miguel', 'last_name' : 'Jones'},
+                {'first_name' : 'Ernie', 'last_name' : 'Bertson'},
+                {'first_name' : 'Nora', 'last_name' : 'Lu'},
+                {'first_name' : 'Sally', 'last_name' : 'Barkyoumb'}
+            ],
+            managers: [
+                {'first_name' : 'Lillian', 'last_name' : 'Chambers'},
+                {'first_name' : 'Gordon', 'last_name' : 'Poe'}
+            ]
+        };
+
+
+
+        console.log("Employees")
+        for (let index = 0; index < users.employees.length; index++) {
+            let count = users.employees[index].first_name.length + users.employees[index].last_name.length;
+            console.log(index + " - " + users.employees[index].first_name + ", " + users.employees[index].last_name + " - " + count);
+        }
+
+        console.log("Managers")
+        for (let index = 0; index < users.managers.length; index++) {
+            let count = users.managers[index].first_name.length + users.managers[index].last_name.length;
+            console.log(index + " - " + users.managers[index].first_name + ", " + users.managers[index].last_name + " - " + count);
+
+        }
+
+
+
+
+    </script>
+
+
+
+</head>
+<body>
+    
+</body>
+</html>
