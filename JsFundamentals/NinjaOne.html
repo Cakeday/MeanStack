@@ -33,21 +33,52 @@
 
 
 
+            this.punch = function(punchedNinja){
+                if(punchedNinja instanceof Ninja){
+                    punchedNinja.health -= 5;
+                    console.log(this.name + " punched " + punchedNinja.name + " and they lost 5 health!");
+                    console.log(punchedNinja.name + "'s health is now " + punchedNinja.health);
+                } else {
+                    console.log("lol " + punchedNinja + " is not a ninja")
+                }
+            }
+
+            this.kick = function(kickedNinja){
+                if(kickedNinja instanceof Ninja){
+                    let amount = 15*this.strength;
+                    kickedNinja.health -= amount;
+                    console.log(this.name + " kicked " + kickedNinja.name + " and they lost " + amount + " health!");
+                    console.log(kickedNinja.name + "'s health is now " + kickedNinja.health);
+                } else {
+                    console.log("lol " + kickedNinja + " is not a ninja")
+                }
+            }
+
+
+
             return this;
         }
 
 
         var Caleb = new Ninja("Caleb");
+        var Pete = new Ninja("Pete");
+        var Lia = "Lia"
 
         console.log(Caleb);
         Caleb.sayName();
         Caleb.showStats();
         Caleb.drinkSake();    
-        Caleb.drinkSake();    
-        Caleb.drinkSake();    
-        Caleb.drinkSake();    
-        Caleb.drinkSake();    
-        Caleb.drinkSake();    
+
+
+        Caleb.punch(Pete); 
+        Pete.punch(Caleb); 
+
+        Pete.kick(Caleb);
+
+
+        Caleb.punch(Lia)
+         
+
     
     
     
