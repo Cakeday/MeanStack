@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    
+        class Card{
+            constructor(suit, string, number){
+                this.suit = suit;
+                this.string = string;
+                this.number = number;
+            }
+
+            showInfo(){
+                console.log("Here is this card's info: ");
+                console.log(this.suit);
+                console.log(this.string);
+                console.log(this.number);
+            }
+        }
+    
+
+
+        class Deck{
+            constructor(){
+                this.deck = [];
+                this.reset();
+            }
+        }
+
+        Deck.prototype.reset = function(){
+            this.deck = [];
+            var suits = ["Hearts", "Spades", "Clubs", "Diamonds"];
+            var pips = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"];
+            for(var suit in suits){
+                for(var pip in pips){
+                    this.deck.push(pips[pip] + " of " + suits[suit])
+                }
+            }
+            return this;
+        }
+
+        Deck.prototype.shuffle = function(){
+            var m = this.deck.length, t, i;
+
+            while(m){
+                i = Math.floor(Math.random() * m--);
+
+                t = this.deck[m]; 
+                this.deck[m] = this.deck[i];
+                this.deck[i] = t
+
+            }
+            return this;
+        }
+
+        Deck.prototype.deal = function(){
+            return this.deck.pop();
+        }
+
+
+
+        class Player{
+            constructor(name){
+                this.name;
+                this.hand = [];
+
+            }
+        }
+
+        Player.prototype.draw = function(deck){
+            this.hand.push(deck.deal());
+            return this;
+        }
+
+        Player.prototype.discard = function(){
+            this.hand.pop();
+            return this;
+        }
+
+
+
+
+
+
+
+        
+
+        var deck1 = new Deck();
+        var deck2 = new Deck();
+        var player1 = new Player("Caleb");
+
+        console.log(deck1.deck);
+        player1.draw(deck1).draw(deck1);
+        deck1.shuffle();
+        player1.draw(deck1).draw(deck2);
+        console.log(player1.hand);
+        player1.discard();
+        console.log(player1.hand);
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
