@@ -14,3 +14,7 @@ io.on('connection', function (socket) { //2
   });
     
 });
+
+app.get('/', function (req, res) {
+    res.render("index");
+})
