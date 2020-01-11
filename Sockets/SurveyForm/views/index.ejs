@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/styles.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    
+        $(document).ready(function (){
+            var socket = io();
+
+            $('.info').hide();
+
+            socket.on('greeting', function (data) {
+                console.log(data.msg);
+                socket.emit('thankyou', { msg: 'Thank you for connecting me! -Client' }); //6
+            });
+
+            $('#form').submit(function(e){
+                e.preventDefault();
+                let form_info = $(this).serializeArray();
+                let dict = {}
+                for(let x of form_info) {
+                    dict[x.name] = x.value
+                }
+                console.log(dict);
+                socket.emit('posting_form', dict);
+            })
+
+            socket.on('final_form', function(data, num){
+                console.log(data);
+                console.log(num);
+                $('.info').html('<p>You emitted the following information to the server: ' + JSON.stringify(data) + '.</p><p>Your lucky number is: ' + num + '</p>');
+                $('.info').show();
+            })
+
+
+        });
+
+    </script>
+    
+</head>
+<body>
+    
+    <div class="wrapper">
+        
+        <h1>index page</h1>
+
+
+        <div class="info">
+        </div>
+
+        <form id="form">
+            <p>Your Name<input type="text" name="name" required></p>
+            <p>Dojo Location:
+                <select name="dojo" required>
+                    <option value="Berkeley">Berkeley</option>
+                    <option value="San Jose">San Jose</option>
+                    <option value="Orange County">Orange County</option>
+                </select>
+            </p>
+            <p>Favorite Language:
+                <select name="language" required>
+                    <option value="Java">Java</option>
+                    <option value="Python">Python</option>
+                    <option value="Javascript">JavaScript</option>
+                </select>
+            </p>
+            <p>Comment:</p><textarea name="comment" cols="30" rows="10" placeholder="(optional)" required></textarea>
+            <p><input id="submit" type="submit" value="Submit!"></p>
+
+            
+        
+        </form>
+
+
+
+
+
+
+
+
+    </div>
+</body>
+</html>
