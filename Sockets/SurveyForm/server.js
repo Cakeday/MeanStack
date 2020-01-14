@@ -22,13 +22,33 @@ io.on('connection', function (socket) {
         console.log(data.msg);
     });
 
-
-
     socket.on('posting_form', function(data){
         console.log(data);
         let num = Math.floor(Math.random()*1000);
         socket.emit('final_form', data, num);
     })
+
+
+
+
+    var counter = 0;
+    socket.on('push_epic', function(data){
+        counter += 1;
+        console.log(counter);
+        io.emit('update', counter);
+    });
+
+    socket.on('reset', function(data){
+        counter = 0;
+        console.log(counter);
+        io.emit('update', counter);
+    })
+
+
+
+
+
+
 
     
 });
@@ -39,4 +59,10 @@ io.on('connection', function (socket) {
 app.get('/', (req, res) => {
     res.render("index");
 });
+
+app.get('/game', (req, res) => {
+    res.render("game");
+});
+
+
 

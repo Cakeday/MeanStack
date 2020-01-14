@@ -1,0 +1,349 @@
+Here are a few of the queries:
+
+> db.students.find()
+{ "_id" : ObjectId("5e1d2fb8d46cdedae626a560"), "name" : "Caleb", "home_state" : "Washington", "lucky_number" : 77, "birthday" : { "month" : 4, "day" : 5, "year" : 1997 } }
+{ "_id" : ObjectId("5e1d2fe6d46cdedae626a561"), "name" : "Maddie", "home_state" : "California", "lucky_number" : 24, "birthday" : { "month" : 5, "day" : 28, "year" : 1998 } }
+{ "_id" : ObjectId("5e1d2ffed46cdedae626a562"), "name" : "Cameron", "home_state" : "California", "lucky_number" : 20, "birthday" : { "month" : 12, "day" : 13, "year" : 1999 } }
+{ "_id" : ObjectId("5e1d3030d46cdedae626a563"), "name" : "Michael", "home_state" : "New Mexico", "lucky_number" : 50, "birthday" : { "month" : 7, "day" : 9, "year" : 1969 } }
+{ "_id" : ObjectId("5e1d3060d46cdedae626a564"), "name" : "Sarina", "home_state" : "California", "lucky_number" : 36, "birthday" : { "month" : 3, "day" : 22, "year" : 1997 } }
+> db.students.find().pretty()
+{
+	"_id" : ObjectId("5e1d2fb8d46cdedae626a560"),
+	"name" : "Caleb",
+	"home_state" : "Washington",
+	"lucky_number" : 77,
+	"birthday" : {
+		"month" : 4,
+		"day" : 5,
+		"year" : 1997
+	}
+}
+{
+	"_id" : ObjectId("5e1d2fe6d46cdedae626a561"),
+	"name" : "Maddie",
+	"home_state" : "California",
+	"lucky_number" : 24,
+	"birthday" : {
+		"month" : 5,
+		"day" : 28,
+		"year" : 1998
+	}
+}
+{
+	"_id" : ObjectId("5e1d2ffed46cdedae626a562"),
+	"name" : "Cameron",
+	"home_state" : "California",
+	"lucky_number" : 20,
+	"birthday" : {
+		"month" : 12,
+		"day" : 13,
+		"year" : 1999
+	}
+}
+{
+	"_id" : ObjectId("5e1d3030d46cdedae626a563"),
+	"name" : "Michael",
+	"home_state" : "New Mexico",
+	"lucky_number" : 50,
+	"birthday" : {
+		"month" : 7,
+		"day" : 9,
+		"year" : 1969
+	}
+}
+{
+	"_id" : ObjectId("5e1d3060d46cdedae626a564"),
+	"name" : "Sarina",
+	"home_state" : "California",
+	"lucky_number" : 36,
+	"birthday" : {
+		"month" : 3,
+		"day" : 22,
+		"year" : 1997
+	}
+}
+> db.students.find({home_state: "California"}).pretty()
+{
+	"_id" : ObjectId("5e1d2fe6d46cdedae626a561"),
+	"name" : "Maddie",
+	"home_state" : "California",
+	"lucky_number" : 24,
+	"birthday" : {
+		"month" : 5,
+		"day" : 28,
+		"year" : 1998
+	}
+}
+{
+	"_id" : ObjectId("5e1d2ffed46cdedae626a562"),
+	"name" : "Cameron",
+	"home_state" : "California",
+	"lucky_number" : 20,
+	"birthday" : {
+		"month" : 12,
+		"day" : 13,
+		"year" : 1999
+	}
+}
+{
+	"_id" : ObjectId("5e1d3060d46cdedae626a564"),
+	"name" : "Sarina",
+	"home_state" : "California",
+	"lucky_number" : 36,
+	"birthday" : {
+		"month" : 3,
+		"day" : 22,
+		"year" : 1997
+	}
+}
+> db.students.find({home_state: "Washington"}).pretty()
+{
+	"_id" : ObjectId("5e1d2fb8d46cdedae626a560"),
+	"name" : "Caleb",
+	"home_state" : "Washington",
+	"lucky_number" : 77,
+	"birthday" : {
+		"month" : 4,
+		"day" : 5,
+		"year" : 1997
+	}
+}
+> db.students.find({lucky_number: {$gt: 3}).pretty()
+... 
+... }
+2020-01-13T19:14:41.483-0800 E  QUERY    [js] uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:40
+> db.students.find({lucky_number: {$gt: 3}}).pretty()
+{
+	"_id" : ObjectId("5e1d2fb8d46cdedae626a560"),
+	"name" : "Caleb",
+	"home_state" : "Washington",
+	"lucky_number" : 77,
+	"birthday" : {
+		"month" : 4,
+		"day" : 5,
+		"year" : 1997
+	}
+}
+{
+	"_id" : ObjectId("5e1d2fe6d46cdedae626a561"),
+	"name" : "Maddie",
+	"home_state" : "California",
+	"lucky_number" : 24,
+	"birthday" : {
+		"month" : 5,
+		"day" : 28,
+		"year" : 1998
+	}
+}
+{
+	"_id" : ObjectId("5e1d2ffed46cdedae626a562"),
+	"name" : "Cameron",
+	"home_state" : "California",
+	"lucky_number" : 20,
+	"birthday" : {
+		"month" : 12,
+		"day" : 13,
+		"year" : 1999
+	}
+}
+{
+	"_id" : ObjectId("5e1d3030d46cdedae626a563"),
+	"name" : "Michael",
+	"home_state" : "New Mexico",
+	"lucky_number" : 50,
+	"birthday" : {
+		"month" : 7,
+		"day" : 9,
+		"year" : 1969
+	}
+}
+{
+	"_id" : ObjectId("5e1d3060d46cdedae626a564"),
+	"name" : "Sarina",
+	"home_state" : "California",
+	"lucky_number" : 36,
+	"birthday" : {
+		"month" : 3,
+		"day" : 22,
+		"year" : 1997
+	}
+}
+> db.students.find({lucky_number: {$lte: 36}}).pretty()
+{
+	"_id" : ObjectId("5e1d2fe6d46cdedae626a561"),
+	"name" : "Maddie",
+	"home_state" : "California",
+	"lucky_number" : 24,
+	"birthday" : {
+		"month" : 5,
+		"day" : 28,
+		"year" : 1998
+	}
+}
+{
+	"_id" : ObjectId("5e1d2ffed46cdedae626a562"),
+	"name" : "Cameron",
+	"home_state" : "California",
+	"lucky_number" : 20,
+	"birthday" : {
+		"month" : 12,
+		"day" : 13,
+		"year" : 1999
+	}
+}
+{
+	"_id" : ObjectId("5e1d3060d46cdedae626a564"),
+	"name" : "Sarina",
+	"home_state" : "California",
+	"lucky_number" : 36,
+	"birthday" : {
+		"month" : 3,
+		"day" : 22,
+		"year" : 1997
+	}
+}
+> db.students.find({lucky_number: {$and: [$gt: 19],[$lt: 30]}}).pretty()
+2020-01-13T19:23:09.375-0800 E  QUERY    [js] uncaught exception: SyntaxError: missing ] after element list :
+@(shell):1:43
+> db.students.find({lucky_number: {$and: {$gt: 19}, {$lt: 30}]}}).pretty()
+2020-01-13T19:24:33.430-0800 E  QUERY    [js] uncaught exception: SyntaxError: expected property name, got '{' :
+@(shell):1:50
+> db.students.find({lucky_number: {$and: [{$gt: 19}, {$lt: 30}]}}).pretty()
+Error: error: {
+	"ok" : 0,
+	"errmsg" : "unknown operator: $and",
+	"code" : 2,
+	"codeName" : "BadValue"
+}
+> db.students.find({lucky_number: {$gt: 19}, {$lt: 30}}).pretty()
+2020-01-13T19:27:03.513-0800 E  QUERY    [js] uncaught exception: SyntaxError: expected property name, got '{' :
+@(shell):1:43
+> db.students.find({lucky_number: {$gt: 19, $lt: 30}).pretty()
+... 
+... }
+2020-01-13T19:27:37.903-0800 E  QUERY    [js] uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:50
+> db.students.find({lucky_number: {$gt: 19, $lt: 30}}).pretty()  }
+2020-01-13T19:27:47.048-0800 E  QUERY    [js] uncaught exception: SyntaxError: expected expression, got '}' :
+@(shell):1:60
+> db.students.find({lucky_number: {$gt: 19, $lt: 30}}).pretty()
+{
+	"_id" : ObjectId("5e1d2fe6d46cdedae626a561"),
+	"name" : "Maddie",
+	"home_state" : "California",
+	"lucky_number" : 24,
+	"birthday" : {
+		"month" : 5,
+		"day" : 28,
+		"year" : 1998
+	}
+}
+{
+	"_id" : ObjectId("5e1d2ffed46cdedae626a562"),
+	"name" : "Cameron",
+	"home_state" : "California",
+	"lucky_number" : 20,
+	"birthday" : {
+		"month" : 12,
+		"day" : 13,
+		"year" : 1999
+	}
+}
+> db.students.updateMany({}, {$set: {interests: ['coding', 'brunch', 'MongoDB']}})
+{ "acknowledged" : true, "matchedCount" : 5, "modifiedCount" : 5 }
+> db.students.find().pretty()
+{
+	"_id" : ObjectId("5e1d2fb8d46cdedae626a560"),
+	"name" : "Caleb",
+	"home_state" : "Washington",
+	"lucky_number" : 77,
+	"birthday" : {
+		"month" : 4,
+		"day" : 5,
+		"year" : 1997
+	},
+	"interests" : [
+		"coding",
+		"brunch",
+		"MongoDB"
+	]
+}
+{
+	"_id" : ObjectId("5e1d2fe6d46cdedae626a561"),
+	"name" : "Maddie",
+	"home_state" : "California",
+	"lucky_number" : 24,
+	"birthday" : {
+		"month" : 5,
+		"day" : 28,
+		"year" : 1998
+	},
+	"interests" : [
+		"coding",
+		"brunch",
+		"MongoDB"
+	]
+}
+{
+	"_id" : ObjectId("5e1d2ffed46cdedae626a562"),
+	"name" : "Cameron",
+	"home_state" : "California",
+	"lucky_number" : 20,
+	"birthday" : {
+		"month" : 12,
+		"day" : 13,
+		"year" : 1999
+	},
+	"interests" : [
+		"coding",
+		"brunch",
+		"MongoDB"
+	]
+}
+{
+	"_id" : ObjectId("5e1d3030d46cdedae626a563"),
+	"name" : "Michael",
+	"home_state" : "New Mexico",
+	"lucky_number" : 50,
+	"birthday" : {
+		"month" : 7,
+		"day" : 9,
+		"year" : 1969
+	},
+	"interests" : [
+		"coding",
+		"brunch",
+		"MongoDB"
+	]
+}
+{
+	"_id" : ObjectId("5e1d3060d46cdedae626a564"),
+	"name" : "Sarina",
+	"home_state" : "California",
+	"lucky_number" : 36,
+	"birthday" : {
+		"month" : 3,
+		"day" : 22,
+		"year" : 1997
+	},
+	"interests" : [
+		"coding",
+		"brunch",
+		"MongoDB"
+	]
+}
+> db.students.update({name: "Caleb"}, {$set: {interests: ['coding', 'brunch', 'MongoDB', 'fermentation', 'yo-yoing', 'dj'ing']}})
+2020-01-13T19:39:37.240-0800 E  QUERY    [js] uncaught exception: SyntaxError: missing ] after element list :
+@(shell):1:119
+> db.students.update({name: "Caleb"}, {$set: {interests: ['coding', 'brunch', 'MongoDB', 'fermentation', 'yo-yoing', 'dj'ing']}})
+2020-01-13T19:40:59.439-0800 E  QUERY    [js] uncaught exception: SyntaxError: missing ] after element list :
+@(shell):1:119
+> db.students.update({name: "Caleb"}, {$addToSet: {interests: 'fermentation', 'yo-yoing', 'dj'ing'}})
+2020-01-13T19:45:11.284-0800 E  QUERY    [js] uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:86
+> db.students.update({name: "Caleb"}, {$addToSet: {interests: 'fermentation'}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.students.update({name: "Caleb"}, {$addToSet: {interests: 'yo-yoing'}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.students.find().pretty()
