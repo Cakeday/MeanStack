@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/marx-css/css/marx.min.css">
+
+</head>
+<body>
+
+    <main>
+
+        <section>
+
+            <h1>Dojo Message Board</h1>
+            <hr>
+
+            <form action="/createmessage" method="post">
+                Name: <input type="text" name="name">
+                Message: <textarea name="message" cols="27" rows="4"></textarea>
+                <input type="submit" value="Post Message">
+            </form>
+
+            <% if(messages.length == 0) { %> 
+                <small>No messages yet, add one?</small>
+            <% } else { %>
+
+                <% for(let message of messages) { %>
+
+                    <dt><h4><small>Name: <%= message.name %></small></h4></dt>
+                    <dt><h4><small>Message:</a></small></h4></dt>
+                        <dd>
+                            <p><%= message.message %></p>
+                        </dd>
+
+                        <% for(let comment of message._comments) { %>
+                            <dd><%= comment.name %></dd>
+                            <dd><%= comment.comment %></dd>
+
+                        <% } %>
+
+
+                    <form action="/createcomment/<%= message._id %>" method="post">
+                        Name: <input type="text" name="name">
+                        Comment: <input type="text" name="comment">
+                        <input type="submit" value="Post comment">
+                    </form>
+
+                <% } %>
+            <% } %>
+
+
+
+
+
+
+
+
+
+        </section>
+
+    </main>
+    
+</body>
+</html>
