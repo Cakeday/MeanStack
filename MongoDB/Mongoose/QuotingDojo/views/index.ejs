@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+    <div class="wrapper">
+        <h1>index page</h1>
+        
+        <form action="/quotes" method="post">
+        <p>Your name: <input type="text" name="name"></p>
+        <p>Your quote: <input type="text" name="quote"></p>
+        <p><input type="submit" value="send it ovaaaa"></p>
+        </form>
+
+        <a href="/quotes">Go to the quotes page</a>
+        <hr>
+
+        <% JSON.stringify(messages) %> 
+        <% if(messages.submit) { %>
+            <% for (var x of messages.submit) { %>
+            <h3><%= x %></h3>
+            <% } %>
+        <% } %>
+
+
+        
+    </div>
+
+</body>
+</html>
