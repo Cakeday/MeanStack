@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/marx-css/css/marx.min.css">
+</head>
+<body>
+
+    <main>
+
+        <section>
+
+            <h1>Single Dog Edit</h1>
+            <dt><h4><small>Name: <a href="/dogs/edit/<%= dog._id %>"><%= dog.name %></a></small></h4></dt>
+                <dd>
+                    <p>Breed: <%= dog.breed %></p>
+                    <p>Speed: <%= dog.speed %></p>
+                    <p>Intelligence: <%= dog.intelligence %></p>
+                </dd>
+            <a href="/"><button>Go home</button></a>
+
+
+
+            <form action="/dogs/<%= dog._id %>" method="post">
+                Dog Name: <input type="text" name="name" value="<%= dog.name %>">
+
+                Dog Breed: <input type="text" name="breed" value="<%= dog.breed %>">
+
+                Dog Speed: <select name="speed">
+                    <% for(let i = 1; i<=10; i++) { %>
+                        <option value="<%= i %>"><%= i %></option>
+                    <% } %>
+                    </select>
+
+                Dog Intelligence: <select name="intelligence">
+                    <% for(let i = 1; i<=10; i++) { %>
+                        <option value="<%= i %>"><%= i %></option>
+                    <% } %>
+                    </select>
+
+                <input type="submit" value="Update this Dog!">
+            </form>
+
+
+
+
+
+
+
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+    
+</body>
+</html>
