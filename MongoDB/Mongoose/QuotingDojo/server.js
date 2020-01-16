@@ -4,6 +4,7 @@
 //      mongoose
 //      ejs
 //      express-flash
+//      path
 //      socket-io (not here yet, but you would create a sockets configuration)
 
 
@@ -11,6 +12,9 @@
 // EXPRESS SETTINGS
 const express = require("express");
 const app = express();
+
+// FILE PATH SETTINGS
+const path = require('path')
 
 // POST DATA SETTINGS
 app.use(express.urlencoded({extended: true}));
