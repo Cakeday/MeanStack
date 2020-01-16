@@ -1,6 +1,3 @@
-const mongoose = require('mongoose'),
-Quote = mongoose.model('Quote')
-
 // Requires your controllers
 let quotes = require('../controllers/quotes')
 
