@@ -62,8 +62,10 @@ const Task = mongoose.model('Task', TaskSchema);
 
 // VIEWS AND STATIC SETTINGS
 // app.use(express.static(__dirname + "/static"));
+app.use(express.static(__dirname + "/public/dist/public"));
 // app.set('view engine', 'ejs');
 // app.set('views', __dirname + '/views');
+
 
 
 
