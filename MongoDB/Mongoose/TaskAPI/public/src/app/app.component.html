@@ -7,5 +7,11 @@
 
 <p *ngFor="let task of tasks">
     {{ task.title }} <br>
-    <button (click)="getOneTaskFromService({{ task._id }})"
+    <button (click)="getOneTaskFromService(task._id)">Click for deets</button>
 </p>
+
+
+<p>Here is the info for the one you clicked hahaha</p>
+<p>{{ single_task['title'] }}</p>
+<p>{{ single_task['description'] }}</p>
+<p>{{ single_task['completed'] }}</p>

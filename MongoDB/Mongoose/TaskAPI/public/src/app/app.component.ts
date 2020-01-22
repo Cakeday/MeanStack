@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
 
   title = 'public';
   tasks = [];
+  single_task;
 
   constructor(private _httpService: HttpService){
 
@@ -33,7 +34,8 @@ export class AppComponent implements OnInit {
     let observable = this._httpService.getOneTask(id);
     observable.subscribe(data => {
       console.log("Got our single data!", data);
-      this.tasks = data['one_task']
+      this.single_task = data;
+      console.log(this.single_task);
     })
   }
 
