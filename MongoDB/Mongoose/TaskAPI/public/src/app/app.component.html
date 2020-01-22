@@ -1,6 +1,11 @@
 
 
-<h1>{{ tasks[0] | json}} </h1>
+<h1>Restful Tasks API</h1>
 
 
-<h1>Hello World</h1>
+<button (click)="getTasksFromService()">Click this button for tasks</button>
+
+<p *ngFor="let task of tasks">
+    {{ task.title }} <br>
+    <button (click)="getOneTaskFromService({{ task._id }})"
+</p>

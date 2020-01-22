@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.getTasksFromService();
   }
 
   getTasksFromService(){
@@ -38,8 +37,8 @@ export class AppComponent implements OnInit {
     })
   }
 
-  createTaskFromService(){
-    let observable = this._httpService.createTask();
+  createTaskFromService(newTask){
+    let observable = this._httpService.createTask(newTask);
     observable.subscribe(data => {
       console.log("created our data!", data);
       this.tasks = data['created']
@@ -61,5 +60,20 @@ export class AppComponent implements OnInit {
       this.tasks = data['tasks']
     })
   }
+
+
+  onButtonClick(): void { 
+    console.log(`Click event is working`);
+  }
+  onButtonClickParam(num: Number): void { 
+      console.log(`Click event is working with num param: ${num}`);
+  }
+  onButtonClickParams(num: Number, str: String): void { 
+      console.log(`Click event is working with num param: ${num} and str param: ${str}`);
+  }
+  onButtonClickEvent(event: any): void { 
+      console.log(`Click event is working with event: ${event}`);
+  }
+
 
 }

@@ -23,8 +23,8 @@ export class HttpService {
     return tempObservable;
   }
 
-  createTask(){
-    let tempObservable = this._http.post('/tasks', {title: "This was YAYAYAYAYAY made using angular", description: "ANGULAR2", completed: false});
+  createTask(newTask){
+    let tempObservable = this._http.post('/tasks', newTask);
     return tempObservable;
   }
 
@@ -38,6 +38,6 @@ export class HttpService {
     return tempObservable;
   }
 
-
+  
 
 }
