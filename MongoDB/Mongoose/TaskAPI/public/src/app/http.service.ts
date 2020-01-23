@@ -28,9 +28,8 @@ export class HttpService {
     return tempObservable;
   }
 
-  updateTask(id){
-    let tempObservable = this._http.put('/tasks/'+id, {title: "This was UPDATED using angular", description: "ANGULAR", completed: false});
-    return tempObservable;
+  updateTask(task){
+    return this._http.put('/tasks/'+task._id, task);
   }
 
   deleteTask(id){

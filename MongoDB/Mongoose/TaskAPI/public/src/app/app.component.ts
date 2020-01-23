@@ -10,23 +10,27 @@ import { HttpService } from './http.service';
 export class AppComponent implements OnInit {
 
   title = 'public';
-  tasks = [];
-  single_task;
+  tasks:any = [];
+  single_task = {};
+  newTask: any;
+  editTask: any;
 
   constructor(private _httpService: HttpService){
 
   }
 
   ngOnInit(){
+    this.newTask = { title: "", description: "" }
+    this.editTask = { title: "", description: "" }
+
   }
 
   getTasksFromService(){
+    this.tasks = [];
     let observable = this._httpService.getTasks();
     observable.subscribe(data => {
       console.log("Got our data!", data);
-      for(let key in data){
-        this.tasks.push(data[key])
-      }
+      this.tasks = data;
     })
   }
 
@@ -39,30 +43,33 @@ export class AppComponent implements OnInit {
     })
   }
 
-  createTaskFromService(newTask){
-    let observable = this._httpService.createTask(newTask);
+  createTaskFromService(){
+    let observable = this._httpService.createTask(this.newTask);
     observable.subscribe(data => {
       console.log("created our data!", data);
-      this.tasks = data['created']
+      this.newTask = { title: "", description: "" }
+      this.getTasksFromService();
     })
   }
 
-  updateTaskFromService(id){
-    let observable = this._httpService.updateTask(id);
-    observable.subscribe(data => {
-      console.log("updated our data!", data);
-      this.tasks = data['updated']
-    })
+  updateTaskFromService(task){
+    this.editTask = task;
   }
 
-  deleteTasksFromService(id){
-    let observable = this._httpService.deleteTask(id);
+  deleteTasksFromService(task){
+    let observable = this._httpService.deleteTask(task._id);
     observable.subscribe(data => {
       console.log("deleted our data!", data);
-      this.tasks = data['tasks']
+      this.getTasksFromService();
     })
   }
 
+  actuallyUpdate() {
+    let observable = this._httpService.updateTask(this.editTask);
+    observable.subscribe(data => {
+      console.log("updated our data!", data);
+    })
+  }
 
   onButtonClick(): void { 
     console.log(`Click event is working`);
@@ -76,6 +83,8 @@ export class AppComponent implements OnInit {
   onButtonClickEvent(event: any): void { 
       console.log(`Click event is working with event: ${event}`);
   }
+
+
 
 
 }

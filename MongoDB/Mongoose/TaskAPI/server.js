@@ -109,6 +109,7 @@ app.post("/tasks", (req, res) => {
 app.put("/tasks/:id", (req, res) => {
     Task.updateOne({_id: req.params.id}, req.body, {new:true})
         .then(data => {
+            console.log("got here")
             res.json(data)
         })
         .catch(err => {

@@ -1,17 +1,57 @@
+<main>
 
 
-<h1>Restful Tasks API</h1>
+
+    <h1>Restful Tasks API</h1>
 
 
-<button (click)="getTasksFromService()">Click this button for tasks</button>
+    <section>
 
-<p *ngFor="let task of tasks">
-    {{ task.title }} <br>
-    <button (click)="getOneTaskFromService(task._id)">Click for deets</button>
-</p>
+        <button (click)="getTasksFromService()">Click this button for tasks</button>
+        <h3>Here is the list of tasks</h3>
+        <p *ngFor="let task of tasks">
+            {{ task.title }} <br>
+            <button (click)="getOneTaskFromService(task)">Click for deets</button>
+            <button (click)="deleteTasksFromService(task)">Click to deleet</button>
+            <button (click)="updateTaskFromService(task)">Click to updeet</button>
+        </p>
 
 
-<p>Here is the info for the one you clicked hahaha</p>
-<p>{{ single_task['title'] }}</p>
-<p>{{ single_task['description'] }}</p>
-<p>{{ single_task['completed'] }}</p>
+    </section>
+    <br><br><br><br>
+
+    <h3>Here is the info for the one you clicked hahaha</h3>
+    <p>Title: {{ single_task['title'] }}</p>
+    <p>Description: {{ single_task['description'] }}</p>
+    <p>Completed: {{ single_task['completed'] }}</p>
+
+    <br><br><br><br>
+
+    <h3>Form to create a new task</h3>
+    <form (submit)="createTaskFromService()">
+        <!-- use the json pipe to see how newTask changes in real time -->
+        <p> {{ newTask | json }} </p>
+        Title: <input type="text" name="title" [(ngModel)]="newTask.title" />
+        Description: <input type="text" name="description" [(ngModel)]="newTask.description" />
+        <input type="submit" value="Create Task" />
+    </form>
+
+
+    <br><br><br><br>
+
+
+    <h3>Form to update a task</h3>
+    <form (submit)="actuallyUpdate()">
+        Title: <input type="text" name="editTask.title" [(ngModel)]="editTask.title">
+        Description: <input type="text" name="editTask.description" [(ngModel)]="editTask.description">
+        <button type="submit">Submit</button>
+    </form>
+            
+            
+
+
+
+
+
+
+</main>
