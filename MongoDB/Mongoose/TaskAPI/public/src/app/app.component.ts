@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
 
   title = 'public';
   tasks:any = [];
-  single_task = {};
+  single_task: any;
   newTask: any;
   editTask: any;
 
@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     this.newTask = { title: "", description: "" }
     this.editTask = { title: "", description: "" }
+    this.single_task = { title: "", description: "", completed: false }
 
   }
 
@@ -34,8 +35,8 @@ export class AppComponent implements OnInit {
     })
   }
 
-  getOneTaskFromService(id){
-    let observable = this._httpService.getOneTask(id);
+  getOneTaskFromService(task){
+    let observable = this._httpService.getOneTask(task._id);
     observable.subscribe(data => {
       console.log("Got our single data!", data);
       this.single_task = data;

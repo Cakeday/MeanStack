@@ -21,9 +21,8 @@
     <br><br><br><br>
 
     <h3>Here is the info for the one you clicked hahaha</h3>
-    <p>Title: {{ single_task['title'] }}</p>
-    <p>Description: {{ single_task['description'] }}</p>
-    <p>Completed: {{ single_task['completed'] }}</p>
+
+    <app-task *ngIf='single_task' [taskToShow]='single_task'></app-task>
 
     <br><br><br><br>
 
