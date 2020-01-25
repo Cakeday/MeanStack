@@ -1,15 +1,21 @@
 // Requires your controllers
-// let quotes = require('../controllers/quotes')
+let controller = require('../controllers/MainController')
 
 
 
 module.exports = function(app){
 
-    // app.get('/', quotes.index);
+    app.get('/cakes', controller.getAllCakes);
+
+    app.get('/cakes/:id', controller.getOneCake);
     
-    // app.post('/quotes', quotes.create);
+    app.post('/cakes', controller.createCake);
+
+    app.put('/cakes/:id', controller.updateCake);
+
+    app.delete('/cakes/:id', controller.deleteCake);
     
-    // app.get('/quotes', quotes.find);
+    
     
     
     // EXAMPLE USAGE OF FLASH

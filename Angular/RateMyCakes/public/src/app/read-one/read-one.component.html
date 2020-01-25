@@ -1,0 +1,12 @@
+<p>read-one works!</p>
+
+<section>
+    <h3>Baked by: {{ singleCake.baker }}</h3>
+    <img [src]="singleCake.cake" alt="Cake alt tag thingy">
+    <p *ngFor="let rating of singleCake._ratings">
+        {{ rating.rating }} <br>
+        {{ rating.comment }}
+    </p>
+    <p >Average rating: {{ parent.average }}</p>
+
+</section>

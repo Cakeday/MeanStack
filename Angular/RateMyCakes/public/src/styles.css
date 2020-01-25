@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+
+.list {
+    max-height: 20vh;
+    overflow: scroll;
+}
+
+.overflow {
+    max-height: 50vh;
+    overflow: scroll;
+}

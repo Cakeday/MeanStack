@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.newTask = { title: "", description: "" }
+this.newTask = { title: "", description: "" }
     this.editTask = { title: "", description: "" }
     this.single_task = { title: "", description: "", completed: false }
 

@@ -1,0 +1,58 @@
+<main>
+
+    <h1>Rate My Cakes</h1>
+
+    <h3>Create a Cake!</h3>
+    <form (submit)=createCake()>
+      Baker name: <input type="text" name="baker" [(ngModel)]="newCake.baker" />
+      Cake url: <input type="text" name="cake" [(ngModel)]="newCake.cake" />
+      {{ newCake | json }} <br>
+      <input type="submit" value="Create a Cake" />
+    </form>
+
+    <br><br><hr><br><br>
+    
+    
+    
+    <div class="overflow">
+      
+      <section *ngFor="let cake of allCakes; let i = index">
+        
+        <img class="list" [src]="cake.cake" (click)="getOneCake(cake)" alt="Something here">
+        <h6>Rate on the cake?</h6>
+        <form (submit)="updateOneCake()">
+          
+          <select name="rating.rating" [(ngModel)]="rating.rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          Comment:
+          <textarea name="rating.comment" cols="30" rows="2" [(ngModel)]="rating.comment"></textarea>
+          {{ rating | json }}
+          <input type="submit" value="Rate The Cake!" (click)="selectToRate(cake)">
+          <hr>
+          
+        </form>
+      </section>
+    </div>
+    
+    <br><br><hr><br><br>
+
+
+    <app-read-one *ngIf="singleCake" [singleCake]="singleCake" [parent]="self"></app-read-one>
+    
+
+
+
+
+
+
+
+
+
+
+
+</main>
