@@ -33,7 +33,7 @@ mongoose.connect('mongodb://localhost/TaskAPI', {useNewUrlParser: true, useUnif
 
 // MODELS
 const TaskSchema = new mongoose.Schema({
-    title: {type: String, required: true, minlength: 1},
+    title: {type: String, required: [true,"cujhbiuyufgyh"], minlength: 1},
     description: {type: String, minlength: 1, default: ""},
     completed: {type: Boolean, default: false},
 }, {timestamps: true});
@@ -90,7 +90,7 @@ app.get("/tasks/:id", (req, res) => {
             res.json(data);
         })
         .catch(err => {
-            err = "I couldn't find what you were looking for :(";
+            // err = "I couldn't find what you were looking for :(";
             res.json(err);
         })
 })
