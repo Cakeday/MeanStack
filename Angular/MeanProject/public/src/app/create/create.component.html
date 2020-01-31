@@ -1,0 +1,32 @@
+<h3>Create new Subject Cards: </h3>
+<form>
+    Text: <input type="text" name="subjectCard.text" [(ngModel)]="subjectCard.text">
+    <button (click)="createSubjectCard()">Create Subject Card</button>
+</form>
+
+
+
+
+<h3>Create new Player Cards: </h3>
+<form>
+    Text: <input type="text" name="playerCard.text" [(ngModel)]="playerCard.text">
+    <button (click)="createPlayerCard()">Create Player Card</button>
+</form>
+
+<button (click)="getAllSubjectCards()">Get All Subject Cards</button>
+
+<ng-container *ngFor="let card of allSubjectCards">
+    <p>{{ card.text }}</p>
+    <button (click)="deleteSubject(card)">Delete</button>
+</ng-container>
+
+
+<br><br><br><br>
+
+
+<button (click)="getAllPlayerCards()">Get All Player Cards</button>
+
+<ng-container *ngFor="let card of allPlayerCards">
+    <p>{{ card.text }}</p>
+    <button (click)="deletePlayer(card)">Delete</button>
+</ng-container>
