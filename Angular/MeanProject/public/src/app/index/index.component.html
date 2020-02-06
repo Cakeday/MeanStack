@@ -1,4 +1,5 @@
-<h3>Host or Join?</h3>
+<h1>Cards Against Humanity</h1>
 
-<button (click)="host()">Host</button>
-<button (click)="join()">Join</button>
+<app-home (playerEmitter)="playerEmitter($event)"></app-home>
+
+<app-register *ngIf="player" [player]="player"></app-register>

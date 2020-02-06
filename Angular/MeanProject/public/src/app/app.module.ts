@@ -14,6 +14,7 @@ import { LobbyComponent } from './lobby/lobby.component';
 import { GameComponent } from './game/game.component';
 import { JudgeComponent } from './judge/judge.component';
 import { CreateComponent } from './create/create.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CreateComponent } from './create/create.component';
     LobbyComponent,
     GameComponent,
     JudgeComponent,
-    CreateComponent
+    CreateComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

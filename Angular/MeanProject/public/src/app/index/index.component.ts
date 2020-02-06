@@ -13,6 +13,7 @@ export class IndexComponent implements OnInit {
   game: any;
   subjectCards: any;
   playerCards: any;
+  player: any;
 
   constructor(private http: HttpService, private socket: SocketService) { }
 
@@ -30,5 +31,11 @@ export class IndexComponent implements OnInit {
     // }
   }
 
-  host() {}
+  playerEmitter(event) {
+    console.log('This is from the index component: ' + event);
+    this.player = event;
+  }
+
+  
+
 }

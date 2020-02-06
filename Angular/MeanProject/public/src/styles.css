@@ -1,9 +1,9 @@
-*{
+/* *{
     outline: red dotted 1px;
     font-family: sans-serif;
     margin: 0px;
     padding: 0px;
-}
+} */
 
 :root {
     --color-1: rgb(8, 8, 8);
