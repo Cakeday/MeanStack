@@ -15,18 +15,17 @@ export class SocketService {
     this.socket = io(this.url);
   }
 
-  createGame(game) {
-    console.log('this is inside of the socket service');
-    console.log(game);
-    console.log(this.socket.id);
-    this.socket.emit('newGameWithHost', game);
 
+
+  // can i use this function for everything?...
+  sendUpdate(game) {
+    this.socket.emit('sendUpdate', game);
   }
 
-  sendGameObject() {
+  getUpdate() {
     return new Observable((observer) => {
-      this.socket.on('gamekey', game => {
-        console.log('passed the game object BACK to the socket service');
+      this.socket.on('getUpdate', game => {
+        console.log('passed the game object from server --> client');
         observer.next(game);
       });
     });
