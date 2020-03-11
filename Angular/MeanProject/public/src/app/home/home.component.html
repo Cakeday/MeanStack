@@ -4,12 +4,42 @@
 
     <hr>
 
-
-    <button class="button-primary">Host</button>
+    <pre>{{player | json}}</pre>
 
     <br>
 
-    <button class="button-primary">Join</button>
+    <pre>{{game | json}}</pre>
+    
+
+    <br>
+
+
+    <button class="button-primary" (click)="toggleHostForm()">Host</button>
+    <form *ngIf="isHost">
+        <label for="host">Name?</label>
+        <input type="text" [(ngModel)]="player.name" name="player.name" id="host">
+        {{player.name | json}}
+        <button (click)="addHostCreateGame()">Create a game!</button>
+    </form>
+    
+
+
+    <br>
+    
+
+
+    <button class="button-primary" (click)="togglePlayerForm()">Join</button>
+    <form *ngIf="isPlayer">
+        <label for="player">Name?</label>
+        <input type="text" [(ngModel)]="player.name" name="player.name" id="player">
+        {{player.name | json}}
+        <button (click)="addPlayerToGame()">Join a game!</button>
+
+    </form>
+
+    <!-- <button (click)="getClientID()">Get the ID</button> -->
+
+
 
 
 

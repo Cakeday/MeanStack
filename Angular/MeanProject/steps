@@ -1,5 +1,26 @@
-Working on adding socket controller functionality
-I have the sockets connected from the server side to the client side
+In the home component
+forms now display if the person is host or if player
 
-now I need to create the game object
-    now I am on the lobby component
+if host, push player into game obj
+    add both decks to the game obj
+    send the update
+    (for now, use boolean switch to indicate that the game is in session; only allow one game 
+    ONLY ONCE GAME STARTS)
+
+
+if player, get game obj that already exists
+    push player into [] if game not in session
+    send the update
+
+use server side to push socket.id into that player's object
+
+
+got the ID on the client side.
+    I need to push this ID into the player object automatically
+        try subscribing on ngINIT of home component
+
+
+
+ok, I lifted the client socket id into the player object
+    Now I need to build the player before pushing
+    now I need to push this player into the players array
