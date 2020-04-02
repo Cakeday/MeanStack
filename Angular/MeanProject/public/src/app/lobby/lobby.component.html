@@ -1,0 +1,31 @@
+<div class="container">
+
+    <h1>Cards Against Humanity</h1>
+
+    <hr>
+
+    <pre>{{ currentPlayer | json }}</pre>
+
+
+    <ol>
+        <li *ngFor="let player of game.players">
+            <pre>{{player.name}}</pre>
+            <pre>{{player.hand}}</pre>
+        </li>
+    </ol>
+
+    <button *ngIf="currentPlayer.host" (click)="emitStart()"> Start the Game!</button>
+
+    <pre>{{game | json}}</pre>
+
+
+
+
+
+
+
+
+
+
+
+</div>

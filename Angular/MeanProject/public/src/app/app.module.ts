@@ -10,12 +10,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
+import { LobbyComponent } from './lobby/lobby.component';
+import { RoundComponent } from './round/round.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CreateComponent,
+    LobbyComponent,
+    RoundComponent,
   ],
   imports: [
     BrowserModule,

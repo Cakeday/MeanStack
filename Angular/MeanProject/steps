@@ -23,4 +23,16 @@ got the ID on the client side.
 
 ok, I lifted the client socket id into the player object
     Now I need to build the player before pushing
+    add id to local storage via js cookie
     now I need to push this player into the players array
+    sent the updates back and stuff
+
+next steps:
+    make sure the player function works too --> updates whenever someone joins
+        maybe make sure you cant have two hosts
+            use a boolean? hasHost = true
+        
+    create a lobby component --> pass the game object to it
+        focus on listing each player and their name
+        populate the decks --> shuffle the decks
+

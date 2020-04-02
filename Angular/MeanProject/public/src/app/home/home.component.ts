@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { SocketService } from '../socket.service';
+import { GameCopyService } from '../game-copy.service';
+
+import Cookies from 'js-cookie';
 
 import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,8 +19,13 @@ export class HomeComponent implements OnInit {
   player: any;
   isHost: boolean;
   isPlayer: boolean;
+  isGameStarted: boolean;
 
-  constructor(private socket: SocketService) { }
+  constructor(
+    private socket: SocketService,
+    private gameCopy: GameCopyService,
+    private route: Router
+    ) { }
 
   ngOnInit() {
     this.player = {
@@ -42,6 +51,8 @@ export class HomeComponent implements OnInit {
       },
     };
 
+    this.isGameStarted = false;
+
     this.isHost = false;
     this.isPlayer = false;
 
@@ -57,6 +68,7 @@ export class HomeComponent implements OnInit {
     updates.subscribe(game => {
       console.log('updated the current game!!!');
       this.game = game;
+      this.gameCopy.setGame(game);
     });
   }
 
@@ -69,24 +81,39 @@ export class HomeComponent implements OnInit {
   addHostCreateGame() {
     console.log('adding a host and creating a game in the component...');
     this.player.host = true;
-
     if (this.player.id) {
+      Cookies.set(this.player.id, this.player.name);
+      console.log(Cookies.get('here is the player id stored in the cookie' + this.player.id));
+      this.game.players.push(this.player);
+    } else {
+      console.error('There wasnt an id associated with the player!');
+      alert('There wasnt an id associated with the player!');
+    }
+    // this backs up the game to a stringified cookie
+    this.gameCopy.setGame(this.game);
+
+    // this sends the updated game to server --> all connected clients
+    this.socket.sendUpdate(this.game);
+    this.route.navigate(['/lobby']);
+  }
+
+
+  
+  addPlayerToGame() {
+    this.isPlayer = true;
+    if (this.player.id) {
+      Cookies.set(this.player.id, this.player.name);
+      console.log(Cookies.get('here is the player id stored in the cookie' + this.player.id));
       this.game.players.push(this.player);
     } else {
       console.error('There wasnt an id associated with the player!');
       alert('There wasnt an id associated with the player!');
     }
 
+    this.gameCopy.setGame(this.game);
     this.socket.sendUpdate(this.game);
-  }
+    this.route.navigate(['/lobby']);
 
-  addPlayerToGame() {
-    const observeable = this.socket.getUpdate();
-    observeable.subscribe(game => {
-      this.game = game;
-      this.game.players.push(this.player);
-      this.socket.sendUpdate(this.game);
-    });
   }
 
 
